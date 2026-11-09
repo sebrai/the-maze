@@ -16,3 +16,8 @@ class Room:
 
 ro = Room((False,False))
 ro.event()
+
+class Spiller():
+      def __init__(self, hp:int, Room:dict[x:int,y:int]):
+            self.hp=hp
+            self.Room = Room
