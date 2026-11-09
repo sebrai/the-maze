@@ -18,6 +18,7 @@ ro = Room((False,False))
 ro.event()
 
 class Spiller():
-      def __init__(self, hp:int, Room:dict[int,int]):
+      def __init__(self, hp:int, Room:dict[str,int]):
             self.hp=hp
             self.Room = Room
+s = Spiller(10,{'x':1,'y':1})
