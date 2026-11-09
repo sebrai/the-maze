@@ -18,10 +18,12 @@ ro = Room((False,False))
 ro.event()
 
 class Escape_room(Room):
-      def __init__(self, config, puzzletekst:str, Answer:str):
+    def __init__(self, config:tuple[bool,bool], puzzletekst:str, Answer:str):
             super().__init__(config)
             self.puzzletekst = puzzletekst
             self.Answer = Answer
+    def event(self):
+          print(self.puzzletekst)
 
 class Spiller():
       def __init__(self, hp:int, Room:dict[str,int]):
