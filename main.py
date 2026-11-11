@@ -1,6 +1,7 @@
 import random as r
 from typing import Callable
 in_progress = True
+win = False
 def hey(): print('hey')  
 def hi():print('hi')
 def trap(): 
@@ -30,9 +31,18 @@ class Escape_room(Room):
           print(self.puzzletekst)
 
 class Spiller():
-      def __init__(self, hp:int):
-            self.hp=hp
-            self.Room = Room
+    def __init__(self, hp:int):
+            self._hp=hp
+    def get_hp(self):
+          return self._hp
+    def set_hp(self,new:int):
+          self._hp = new
+    def take_dmg(self,dmg:int):
+          self.set_hp(self._hp - dmg)
+          if self._hp <= 0:
+                global in_progress
+                in_progress = False
+                print('you have died in the maze')
 s = Spiller(10)
 
 
