@@ -22,7 +22,7 @@ def trap3():
       print('you took:',dmg ,'damage, now at', s.get_hp())
       s.take_dmg(dmg)
 def trap4():
-      dmg
+      pass
 
 events:list[Callable[[],None]] = [
       trap1,trap1,trap1,trap2,trap3,trap3
@@ -40,7 +40,6 @@ class Room:
           return self._config
 
 ro = Room((False,False,False))
-ro.event()
 
 class Escape_room(Room):
     def __init__(self, config:tuple[bool,bool,bool], puzzletekst:str, Answer:str):
