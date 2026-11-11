@@ -69,12 +69,13 @@ s = Spiller(10)
 dirs = ('left', 'forward','right')
 curent_room = Room((r.choice([True,False]),r.choice([True,False]),r.choice([True,False])))
 while in_progress:
+    curent_room.event()
     paths = [val for flag, val in zip(curent_room.get_config(),dirs) if flag]
     direction = input('choose  a direction to move, possible directions: ()'+str(paths)+'): ')
     while not direction in paths:
         print(direction, ' was not an option, you may have mistyped')
         direction = input('choose  a direction to move, possible directions: ()'+str(paths)+'): ')
-
+    curent_room = Room((r.choice([True,False]),r.choice([True,False]),r.choice([True,False])))
 
 if win:
       pass
