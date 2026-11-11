@@ -11,19 +11,21 @@ events:list[Callable[[],None]] = [
       hey,hi
 ]
 class Room:
-    def __init__(self,config:tuple[bool,bool] ) -> None:
-            self.config = config
+    def __init__(self,config:tuple[bool,bool,bool] ) -> None:
+            self._config = config
 
     def event(self):
           num = r.randint(0,len(events)-1)
           e = events[num]
           e()
+    def get_config(self)-> tuple[bool,bool,bool]:
+          return self._config
 
-ro = Room((False,False))
+ro = Room((False,False,False))
 ro.event()
 
 class Escape_room(Room):
-    def __init__(self, config:tuple[bool,bool], puzzletekst:str, Answer:str):
+    def __init__(self, config:tuple[bool,bool,bool], puzzletekst:str, Answer:str):
             super().__init__(config)
             self.puzzletekst = puzzletekst
             self.Answer = Answer
@@ -46,14 +48,17 @@ class Spiller():
 s = Spiller(10)
 
 
+dirs = ('left', 'forward','right')
+curent_room = Room((r.choice([True,False]),r.choice([True,False]),r.choice([True,False])))
+while in_progress:
+    paths = [val for flag, val in zip(curent_room.get_config(),dirs) if flag]
+    direction = input('choose  a direction to move, possible directions: ()'+str(paths)+'): ')
+    while not direction in paths:
+        print(direction, ' was not an option, you may have mistyped')
+        direction = input('choose  a direction to move, possible directions: ()'+str(paths)+'): ')
 
 
-
-
-
-
-
-
-
-
-
+if win:
+      pass
+else:
+      pass
