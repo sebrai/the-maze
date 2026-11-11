@@ -26,7 +26,20 @@ class Escape_room(Room):
           print(self.puzzletekst)
 
 class Spiller():
-      def __init__(self, hp:int, Room:dict[str,int]):
+      def __init__(self, hp:int):
             self.hp=hp
             self.Room = Room
-s = Spiller(10,{'x':1,'y':1})
+s = Spiller(10)
+
+
+
+
+
+
+
+
+
+
+
+
+
