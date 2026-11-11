@@ -4,12 +4,30 @@ in_progress = True
 win = False
 def hey(): print('hey')  
 def hi():print('hi')
-def trap(): 
+def trap1(): 
       dmg = r.randint(0,3)
-      print('you took:',dmg ,'damage, now at', s)
+      if dmg<0:
+            print('you were hit by an arrow. you took:',dmg ,'damage, now at', s.get_hp())
+      else:
+            print("You dodged ")
+      s.take_dmg()
+
+def trap2():
+      dmg = r.randint(4,6)
+      print('you took:',dmg ,'damage, now at', s.get_hp())
+      s.take_dmg()
+
+def trap3():
+      dmg = round(s.get_hp()/2)
+      print('you took:',dmg ,'damage, now at', s.get_hp())
+      s.take_dmg()
+def trap4():
+      dmg
+
 events:list[Callable[[],None]] = [
-      hey,hi
+      trap1,trap1,trap1,trap2,trap3,trap3
 ]
+
 class Room:
     def __init__(self,config:tuple[bool,bool,bool] ) -> None:
             self._config = config
@@ -45,6 +63,7 @@ class Spiller():
                 global in_progress
                 in_progress = False
                 print('you have died in the maze')
+      
 s = Spiller(10)
 
 
