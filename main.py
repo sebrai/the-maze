@@ -1,7 +1,11 @@
 import random as r
 from typing import Callable
+in_progress = True
 def hey(): print('hey')  
 def hi():print('hi')
+def trap(): 
+      dmg = r.randint(0,3)
+      print('you took:',dmg ,'damage, now at', s)
 events:list[Callable[[],None]] = [
       hey,hi
 ]
