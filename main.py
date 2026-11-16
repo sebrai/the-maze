@@ -43,6 +43,29 @@ events:list[Callable[[],None]] = [
       trap1,trap1,trap1,trap1,trap1,trap2,trap2,trap3,trap3,trap3,trap3,trap4,heal,heal,heal
 ]
 
+puzzles: list[tuple[str, str]] = [
+      ("true or false: git pull puts your code on the internet", "false"),
+      ("true or false: git push uploads your commits to GitHub", "true"),
+      ("true or false: a variable can change its value while the program runs", "true"),
+      ("true or false: 7 / 2 gives 3 in Python", "false"),
+      ("true or false: HTML is a programming language", "false"),
+      ("true or false: 1 byte is 8 bits", "true"),
+      ("true or false: RAM keeps its data after the computer is turned off", "false"),
+      ("true or false: == checks if two values are equal", "true"),
+      ("true or false: Python starts counting list positions at 1", "false"),
+      ("true or false: a while loop runs as long as its condition is true", "true"),
+      ("what keyword do you use to make a function in Python?", "def"),
+      ("what data type is the value True?", "bool"),
+      ("what is 10 % 3?", "1"),
+      ("what git command saves a snapshot of your changes?", "commit"),
+      ("what is the output of print(len('maze'))?", "4"),
+      ("what do we call a mistake in code that makes it behave wrong?", "bug"),
+      ("in binary, what is 101 in decimal?", "5"),
+      ("what symbol starts a comment in Python?", "#"),
+      ("what does 'int' stand for?", "integer"),
+      ("what is the result of 'a' + 'b' in Python?", "ab"),
+]
+
 class Room:
     def __init__(self,config:tuple[bool,bool,bool] ) -> None:
             self._config = config
