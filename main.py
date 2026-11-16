@@ -19,8 +19,8 @@ def trap2():
 
 def trap3():
       dmg = round(s.get_hp()/2)
-      print('you took:',dmg ,'damage, now at', s.get_hp())
       s.take_dmg(dmg)
+      print('You step on a cursed rune and feel half your life drain away. You took', dmg, 'damage, now at', s.get_hp())
 
 def trap4():
       dmg=s.get_hp
@@ -39,7 +39,7 @@ def heal():
             print('You found a potion and healed to', s.get_hp())
       
 events:list[Callable[[],None]] = [
-      trap1,trap1,trap1,trap1,trap1,trap2,trap2,trap2,trap3,trap3,trap3,trap3,trap4,heal,heal,
+      trap1,trap1,trap1,trap1,trap1,trap2,trap2,trap2,trap3,trap3,trap3,trap3,trap4,heal,heal
 ]
 
 class Room:
