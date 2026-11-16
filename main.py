@@ -6,7 +6,7 @@ def hey(): print('hey')
 def hi():print('hi')
 def trap1(): 
       dmg = r.randint(0,3)
-      if dmg<0:
+      if dmg>0:
             print('you were hit by an arrow. you took:',dmg ,'damage, now at', s.get_hp())
       else:
             print("You dodged an arrow. you took:",dmg ,"damage")
