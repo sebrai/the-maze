@@ -62,7 +62,7 @@ class Escape_room(Room):
             self.puzzletekst = puzzletekst
             self.answer = Answer
       def event(self):
-            a = input(self.puzzletekst+ ": ")
+            a = input(self.puzzletekst+ ": ").strip().lower()
             global win, in_progress
             if a == self.answer:
                   win = True
