@@ -14,8 +14,9 @@ def trap1():
 
 def trap2():
       dmg = r.randint(4,6)
-      print('you took:',dmg ,'damage, now at', s.get_hp())
       s.take_dmg(dmg)
+      print('A blade swings out of the wall! You took', dmg, 'damage, now at', s.get_hp())
+
 
 def trap3():
       dmg = round(s.get_hp()/2)
