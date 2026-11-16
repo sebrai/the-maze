@@ -81,17 +81,20 @@ s = Spiller(10)
 
 
 dirs = ('left', 'forward','right')
-curent_room = Room((r.choice([True,False]),r.choice([True,False]),r.choice([True,False])))
+curent_room = Room((r.choice([True,False]),True,r.choice([True,False])))
 while in_progress:
-    curent_room.event()
-    paths = [val for flag, val in zip(curent_room.get_config(),dirs) if flag]
-    direction = input('choose  a direction to move, possible directions: ()'+str(paths)+'): ')
-    while not direction in paths:
-        print(direction, ' was not an option, you may have mistyped')
-        direction = input('choose  a direction to move, possible directions: ()'+str(paths)+'): ')
-    curent_room = Room((r.choice([True,False]),r.choice([True,False]),r.choice([True,False])))
+      curent_room.event()
+      paths = [val for flag, val in zip(curent_room.get_config(),dirs) if flag]
+      direction = input('choose  a direction to move, possible directions: ()'+str(paths)+'): ')
+      while not direction in paths:
+            print(direction, ' was not an option, you may have mistyped')
+            direction = input('choose  a direction to move, possible directions: ()'+str(paths)+'): ')
+      if not (r.randint(1,6) == 6 or s.get_hp()> 5):
+            curent_room = Room((r.choice([True,False]),True,r.choice([True,False])))
+      else:
+            curent_room = Escape_room((False,True,False),"true or false: git pull puts your code on the internett","false")
 
 if win:
-      pass
+      print('you got out alive')
 else:
-      pass
+      print('try again next time')
