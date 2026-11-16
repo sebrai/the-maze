@@ -8,7 +8,7 @@ def trap1():
       dmg = r.randint(0,3)
       s.take_dmg(dmg)
       if dmg>0:
-            print('you were hit by an arrow. you took:',dmg ,'damage, now at', s.get_hp())
+            print('you were hit by an arrow. you took:',dmg ,'damage, now at', s.get_hp(),"hp")
       else:
             print("You dodged an arrow. you took:",dmg ,"damage")
       
@@ -16,13 +16,13 @@ def trap1():
 def trap2():
       dmg = r.randint(3,5)
       s.take_dmg(dmg)
-      print('A blade swings out of the wall! You took', dmg, 'damage, now at', s.get_hp())
+      print('A blade swings out of the wall! You took', dmg, 'damage, now at', s.get_hp(),"hp")
 
 
 def trap3():
       dmg = round(s.get_hp()/2)
       s.take_dmg(dmg)
-      print('You step on a cursed rune and feel half your life drain away. You took', dmg, 'damage, now at', s.get_hp())
+      print('You step on a cursed rune and feel half your life drain away. You took', dmg, 'damage, now at', s.get_hp(),"hp")
 
 def trap4():
       dmg=s.get_hp()
@@ -39,7 +39,7 @@ def heal():
             if new_hp > 10:
                   new_hp = 10
             s.set_hp(new_hp)
-            print('You found a potion and healed to', s.get_hp())
+            print('You found a potion and healed to', s.get_hp(),"hp")
       
 events:list[Callable[[],None]] = [
       trap1,trap1,trap1,trap1,trap1,trap2,trap2,trap3,trap3,trap3,trap3,trap4,heal,heal,heal
