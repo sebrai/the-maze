@@ -13,7 +13,7 @@ def trap1():
       s.take_dmg(dmg)
 
 def trap2():
-      dmg = r.randint(4,6)
+      dmg = r.randint(3,5)
       s.take_dmg(dmg)
       print('A blade swings out of the wall! You took', dmg, 'damage, now at', s.get_hp())
 
@@ -32,7 +32,7 @@ def heal():
       if s.get_hp() >= 10:
             print('You found a potion, but you are already at full health.')
       else:
-            amount = r.randint(1,4)
+            amount = r.randint(2,4)
             new_hp = s.get_hp() + amount
             if new_hp > 10:
                   new_hp = 10
@@ -40,7 +40,7 @@ def heal():
             print('You found a potion and healed to', s.get_hp())
       
 events:list[Callable[[],None]] = [
-      trap1,trap1,trap1,trap1,trap1,trap2,trap2,trap2,trap3,trap3,trap3,trap3,trap4,heal,heal
+      trap1,trap1,trap1,trap1,trap1,trap2,trap2,trap3,trap3,trap3,trap3,trap4,heal,heal,heal
 ]
 
 class Room:
@@ -57,12 +57,19 @@ class Room:
 ro = Room((False,False,False))
 
 class Escape_room(Room):
-    def __init__(self, config:tuple[bool,bool,bool], puzzletekst:str, Answer:str):
+      def __init__(self, config:tuple[bool,bool,bool], puzzletekst:str, Answer:str):
             super().__init__(config)
             self.puzzletekst = puzzletekst
-            self.Answer = Answer
-    def event(self):
-          print(self.puzzletekst)
+            self.answer = Answer
+      def event(self):
+            a = input(self.puzzletekst+ ": ")
+            global win 
+            if a == self.answer:
+                  win = True
+                  print('correct you are safe')
+            else:
+                  print('incorrect, you fell down a pitfall and took 3 dmg')
+                  s.take_dmg(3)
 
 class Spiller():
     def __init__(self, hp:int):
@@ -90,7 +97,7 @@ while in_progress:
       while not direction in paths:
             print(direction, ' was not an option, you may have mistyped')
             direction = input('choose  a direction to move, possible directions: ()'+str(paths)+'): ')
-      if not (r.randint(1,6) == 6 or s.get_hp()> 5):
+      if not (r.randint(1,6) == 6 or s.get_hp() <= 5):
             curent_room = Room((r.choice([True,False]),True,r.choice([True,False])))
       else:
             curent_room = Escape_room((False,True,False),"true or false: git pull puts your code on the internett","false")
