@@ -6,11 +6,12 @@ def hey(): print('hey')
 def hi():print('hi')
 def trap1(): 
       dmg = r.randint(0,3)
+      s.take_dmg(dmg)
       if dmg>0:
             print('you were hit by an arrow. you took:',dmg ,'damage, now at', s.get_hp())
       else:
             print("You dodged an arrow. you took:",dmg ,"damage")
-      s.take_dmg(dmg)
+      
 
 def trap2():
       dmg = r.randint(3,5)
@@ -25,8 +26,9 @@ def trap3():
 
 def trap4():
       dmg=s.get_hp()
-      print("you have fallen in a pittrap. you have died")
       s.take_dmg(dmg)
+      print("you have fallen in a pittrap. you have died")
+     
 
 def heal():
       if s.get_hp() >= 10:
