@@ -67,7 +67,7 @@ s = Spiller(10)
 
 
 dirs = ('left', 'forward','right')
-curent_room = Room((r.choice([True,False]),r.choice([True,False]),r.choice([True,False])))
+curent_room = Room((r.choice([True,False]),True,r.choice([True,False])))
 while in_progress:
     curent_room.event()
     paths = [val for flag, val in zip(curent_room.get_config(),dirs) if flag]
