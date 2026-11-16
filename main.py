@@ -21,11 +21,25 @@ def trap3():
       dmg = round(s.get_hp()/2)
       print('you took:',dmg ,'damage, now at', s.get_hp())
       s.take_dmg(dmg)
-def trap4():
-      pass
 
+def trap4():
+      dmg=s.get_hp
+      print("you have fallen in a pittrap. you have died")
+      s.take_dmg(dmg)
+
+def heal():
+      if s.get_hp() >= 10:
+            print('You found a potion, but you are already at full health.')
+      else:
+            amount = r.randint(1,4)
+            new_hp = s.get_hp() + amount
+            if new_hp > 10:
+                  new_hp = 10
+            s.set_hp(new_hp)
+            print('You found a potion and healed to', s.get_hp())
+      
 events:list[Callable[[],None]] = [
-      trap1,trap1,trap1,trap2,trap3,trap3
+      trap1,trap1,trap1,trap1,trap1,trap2,trap2,trap2,trap3,trap3,trap3,trap3,trap4,heal,heal,
 ]
 
 class Room:
