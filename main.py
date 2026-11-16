@@ -24,7 +24,7 @@ def trap3():
       print('You step on a cursed rune and feel half your life drain away. You took', dmg, 'damage, now at', s.get_hp())
 
 def trap4():
-      dmg=s.get_hp
+      dmg=s.get_hp()
       print("you have fallen in a pittrap. you have died")
       s.take_dmg(dmg)
 
