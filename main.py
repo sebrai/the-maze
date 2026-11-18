@@ -64,6 +64,7 @@ puzzles: list[tuple[str, str]] = [
       ("what symbol starts a comment in Python?", "#"),
       ("what does 'int' stand for?", "integer"),
       ("what is the result of 'a' + 'b' in Python?", "ab"),
+      ("what does Bool stand for?: ","boolean")
 ]
 
 class Room:
