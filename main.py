@@ -39,11 +39,24 @@ def heal(): # heals you
             s.set_hp(new_hp)
             print('You found a potion and healed to', s.get_hp(),"hp")
       
-events:list[Callable[[],None]] = [ # list is specified to be a list of callables/functions 
+class Room: # objekt for room
+    events:list[Callable[[],None]] = [ # list is specified to be a list of callables/functions 
       trap1,trap1,trap1,trap1,trap1,trap2,trap2,trap3,trap3,trap3,trap3,trap4,heal,heal,heal
-] # elements can be called with events[index]()
+      ] # elements can be called with events[index]()
+    def __init__(self,config:tuple[bool,bool,bool] ) -> None:
+            self._config = config # config is witch rooms the player can go to afterwards
+            num = r.randint(0,len(Room.events)-1)
+            self.e = Room.events[num]
+    def event(self):
+          self.e()
+    def get_config(self)-> tuple[bool,bool,bool]:
+          return self._config
 
-puzzles: list[tuple[str, str]] = [ # a list full of tuples with questions and answers 
+ro = Room((False,False,False))
+
+
+class Escape_room(Room):
+      puzzles: list[tuple[str, str]] = [ # a list full of tuples with questions and answers 
       ("true or false: git pull puts your code on the internet: ", "false"),
       ("true or false: git push uploads your commits to GitHub: ", "true"),
       ("true or false: a variable can change its value while the program runs: ", "true"),
@@ -65,21 +78,7 @@ puzzles: list[tuple[str, str]] = [ # a list full of tuples with questions and an
       ("what does 'int' stand for?: ", "integer"),
       ("what is the result of 'a' + 'b' in Python?: ", "ab"),
       ("what does Bool stand for?: ","boolean")
-]
-
-class Room: # objekt for room
-    def __init__(self,config:tuple[bool,bool,bool] ) -> None:
-            self._config = config # config is witch rooms the player can go to afterwards
-            num = r.randint(0,len(events)-1)
-            self.e = events[num]
-    def event(self):
-          self.e()
-    def get_config(self)-> tuple[bool,bool,bool]:
-          return self._config
-
-ro = Room((False,False,False))
-
-class Escape_room(Room):
+      ]
       def __init__(self, config:tuple[bool,bool,bool], puzzletekst:str, Answer:str):
             super().__init__(config)
             self._puzzletekst = puzzletekst
