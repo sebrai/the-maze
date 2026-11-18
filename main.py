@@ -1,5 +1,5 @@
 import random as r # imports
-import time as t 
+import time as t # use t.sleep for pauses where the code waits to continue
 from typing import Callable #<- this is used so that functions can be used as a datatype 
 in_progress = True # false when game is over or won
 win = False # has player won
