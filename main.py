@@ -70,11 +70,10 @@ puzzles: list[tuple[str, str]] = [ # a list full of tuples with questions and an
 class Room: # objekt for room
     def __init__(self,config:tuple[bool,bool,bool] ) -> None:
             self._config = config # config is witch rooms the player can go to afterwards
-
+            num = r.randint(0,len(events)-1)
+            self.e = events[num]
     def event(self):
-          num = r.randint(0,len(events)-1)
-          e = events[num]
-          e()
+          self.e()
     def get_config(self)-> tuple[bool,bool,bool]:
           return self._config
 
