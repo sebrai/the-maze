@@ -1,4 +1,5 @@
 import random as r # imports
+import time as t 
 from typing import Callable #<- this is used so that functions can be used as a datatype 
 in_progress = True # false when game is over or won
 win = False # has player won
@@ -9,18 +10,20 @@ def trap1(): # traps
             print('you were hit by an arrow. you took:',dmg ,'damage, now at', s.get_hp(),"hp")
       else:
             print("You dodged an arrow. you took:",dmg ,"damage")
-      
+      t.sleep(0.5)
 
 def trap2():
       dmg = r.randint(3,5)
       s.take_dmg(dmg)
       print('A blade swings out of the wall! You took', dmg, 'damage, now at', s.get_hp(),"hp")
+      t.sleep(0.5)
 
 
 def trap3():
       dmg = round(s.get_hp()/2)
       s.take_dmg(dmg)
       print('You step on a cursed rune and feel half your life drain away. You took', dmg, 'damage, now at', s.get_hp(),"hp")
+      t.sleep(0.5)
 
 def trap4():
       dmg=s.get_hp()
@@ -38,6 +41,10 @@ def heal(): # heals you
                   new_hp = 10
             s.set_hp(new_hp)
             print('You found a potion and healed to', s.get_hp(),"hp")
+            t.sleep(0.2)
+            print('healing . . .')
+            t.sleep(1.3)
+
       
 class Room: # objekt for room
     events:list[Callable[[],None]] = [ # list is specified to be a list of callables/functions 
@@ -85,6 +92,8 @@ class Escape_room(Room):
             self._answer = Answer
       def event(self):
             a = input(self._puzzletekst+ ": ").strip().lower()
+            print('processing answer')
+            t.sleep(1)
             global win, in_progress
             if a == self._answer:
                   win = True
@@ -111,7 +120,7 @@ class Spiller():
 s = Spiller(10)
 
 print("You have woken up in a dark and cold maze try and get out")
-
+t.sleep(0.3)
 dirs = ('left', 'forward','right')
 curent_room = Room((r.choice([True,False]),True,r.choice([True,False])))
 while in_progress:
@@ -119,15 +128,19 @@ while in_progress:
       direction = input('choose  a direction to move, possible directions: ('+str(paths).replace("['","").replace("']","").replace("', '", ", ").strip() +'): ')
       while not direction.strip().lower() in paths:
             print(direction, ' was not an option, you may have mistyped')
+            t.sleep(0.1)
             direction = input('choose  a direction to move, possible directions: ('+str(paths)+'): ')
       if not (r.randint(1,6) == 6 and s.get_hp() < 5):
             curent_room = Room((r.choice([True,False]),True,r.choice([True,False])))
       else:
             a,b = r.choice(Escape_room.puzzles)
             curent_room = Escape_room((False,True,False),a,b)
+      t.sleep(0.3)
       curent_room.event()
+      t.sleep(0.5)
 
 if win:
+      t.sleep(0.5)
       print('you got out alive')
 else:
       print('try again next time')
