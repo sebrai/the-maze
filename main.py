@@ -112,15 +112,16 @@ class Spiller():
       
 s = Spiller(10)
 
+print("You have woken up in a dark and cold maze try and get out")
 
 dirs = ('left', 'forward','right')
 curent_room = Room((r.choice([True,False]),True,r.choice([True,False])))
 while in_progress:
       paths = [val for flag, val in zip(curent_room.get_config(),dirs) if flag]
-      direction = input('choose  a direction to move, possible directions: ()'+str(paths)+'): ')
+      direction = input('choose  a direction to move, possible directions: ('+str(paths).replace("['","").replace("']","").replace("', '", ", ").strip() +'): ')
       while not direction.strip().lower() in paths:
             print(direction, ' was not an option, you may have mistyped')
-            direction = input('choose  a direction to move, possible directions: ()'+str(paths)+'): ')
+            direction = input('choose  a direction to move, possible directions: ('+str(paths)+'): ')
       if not (r.randint(1,6) == 6 and s.get_hp() < 5):
             curent_room = Room((r.choice([True,False]),True,r.choice([True,False])))
       else:
