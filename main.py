@@ -123,7 +123,7 @@ while in_progress:
       if not (r.randint(1,6) == 6 and s.get_hp() < 5):
             curent_room = Room((r.choice([True,False]),True,r.choice([True,False])))
       else:
-            a,b = r.choice(puzzles)
+            a,b = r.choice(Escape_room.puzzles)
             curent_room = Escape_room((False,True,False),a,b)
       curent_room.event()
 
