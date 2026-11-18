@@ -119,24 +119,24 @@ class Spiller():# class for player
       
 s = Spiller(10)# object for spiller
 
-print("You have woken up in a dark and cold maze try and get out")
+print("You have woken up in a dark and cold maze try and get out") # intro
 t.sleep(0.3)
 dirs = ('left', 'forward','right')
-curent_room = Room((r.choice([True,False]),True,r.choice([True,False])))
-while in_progress:
-      paths = [val for flag, val in zip(curent_room.get_config(),dirs) if flag]
-      direction = input('choose  a direction to move, possible directions: ('+str(paths).replace("['","").replace("']","").replace("', '", ", ").strip() +'): ')
-      while not direction.strip().lower() in paths:
+curent_room = Room((r.choice([True,False]),True,r.choice([True,False])))# sets the starting room
+while in_progress: # this game loop runs al long as the game is in progress
+      paths = [val for flag, val in zip(curent_room.get_config(),dirs) if flag] # paths is a tuple with left forward and or right depending on the current rooms config
+      direction = input('choose  a direction to move, possible directions: ('+str(paths).replace("['","").replace("']","").replace("', '", ", ").strip() +'): ') # replace and strip is used o show a cleaner output
+      while not direction.strip().lower() in paths: # if you made a typo
             print(direction, ' was not an option, you may have mistyped')
             t.sleep(0.1)
             direction = input('choose  a direction to move, possible directions: ('+str(paths)+'): ')
-      if not (r.randint(1,6) == 6 and s.get_hp() < 5):
+      if not (r.randint(1,6) == 6 and s.get_hp() < 5): # rolls to see if you are going to the final room or not
             curent_room = Room((r.choice([True,False]),True,r.choice([True,False])))
       else:
-            a,b = r.choice(Escape_room.puzzles)
-            curent_room = Escape_room((False,True,False),a,b)
+            a,b = r.choice(Escape_room.puzzles) 
+            curent_room = Escape_room((False,True,False),a,b) #crates the final room
       t.sleep(0.3)
-      curent_room.event()
+      curent_room.event() # plays what is going to happen the your new room
       t.sleep(0.5)
 
 if win:
