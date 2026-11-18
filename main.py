@@ -62,7 +62,7 @@ class Room: # objekt for room
 ro = Room((False,False,False))
 
 
-class Escape_room(Room):
+class Escape_room(Room):# class for escape room
       puzzles: list[tuple[str, str]] = [ # a list full of tuples with questions and answers 
       ("true or false: git pull puts your code on the internet: ", "false"),
       ("true or false: git push uploads your commits to GitHub: ", "true"),
@@ -88,9 +88,9 @@ class Escape_room(Room):
       ]
       def __init__(self, config:tuple[bool,bool,bool], puzzletekst:str, Answer:str):
             super().__init__(config)
-            self._puzzletekst = puzzletekst
+            self._puzzletekst = puzzletekst # puzzletekst is witch question you get in escape room
             self._answer = Answer
-      def event(self):
+      def event(self): # spør deg spørsmål og skjekker om du svarte riktig eller ikke
             a = input(self._puzzletekst+ ": ").strip().lower()
             print('processing answer')
             t.sleep(1)
@@ -103,21 +103,21 @@ class Escape_room(Room):
                   print('incorrect, you fell down a pitfall and took 3 dmg')
                   s.take_dmg(3)
 
-class Spiller():
+class Spiller():# class for player
     def __init__(self, hp:int):
             self._hp=hp
-    def get_hp(self):
+    def get_hp(self):# gets the hp 
           return self._hp
-    def set_hp(self,new:int):
+    def set_hp(self,new:int):# sets the hp to a new value
           self._hp = new
-    def take_dmg(self,dmg:int):
+    def take_dmg(self,dmg:int):# updates hp value after you take dmg
           self.set_hp(self._hp - dmg)
-          if self._hp <= 0:
+          if self._hp <= 0:# checks if hp is zero
                 global in_progress
                 in_progress = False
                 print('you have died in the maze')
       
-s = Spiller(10)
+s = Spiller(10)# object for spiller
 
 print("You have woken up in a dark and cold maze try and get out")
 t.sleep(0.3)
