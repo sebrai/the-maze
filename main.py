@@ -9,7 +9,7 @@ def trap1(): # traps
       if dmg>0:
             print('you were hit by an arrow. you took:',dmg ,'damage, now at', s.get_hp(),"hp")
       else:
-            print("You dodged an arrow. you took:",dmg ,"damage")
+            print("An arrow came at you but you dodged. you took:",dmg ,"damage")
       t.sleep(0.5)
 
 def trap2():
