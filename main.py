@@ -1,8 +1,8 @@
-import random as r
-from typing import Callable
-in_progress = True
-win = False
-def trap1(): 
+import random as r # imports
+from typing import Callable #<- this is used so that functions can be used as a datatype 
+in_progress = True # false when game is over or won
+win = False # has player won
+def trap1(): # traps
       dmg = r.randint(0,3)
       s.take_dmg(dmg)
       if dmg>0:
@@ -28,7 +28,7 @@ def trap4():
       print("you have fallen in a pittrap. you have died")
      
 
-def heal():
+def heal(): # heals you
       if s.get_hp() >= 10:
             print('You found a potion, but you are already at full health.')
       else:
@@ -39,11 +39,11 @@ def heal():
             s.set_hp(new_hp)
             print('You found a potion and healed to', s.get_hp(),"hp")
       
-events:list[Callable[[],None]] = [
+events:list[Callable[[],None]] = [ # list is specified to be a list of callables/functions 
       trap1,trap1,trap1,trap1,trap1,trap2,trap2,trap3,trap3,trap3,trap3,trap4,heal,heal,heal
-]
+] # elements can be called with events[index]()
 
-puzzles: list[tuple[str, str]] = [
+puzzles: list[tuple[str, str]] = [ # a list full of tuples with questions and answers 
       ("true or false: git pull puts your code on the internet: ", "false"),
       ("true or false: git push uploads your commits to GitHub: ", "true"),
       ("true or false: a variable can change its value while the program runs: ", "true"),
@@ -67,9 +67,9 @@ puzzles: list[tuple[str, str]] = [
       ("what does Bool stand for?: ","boolean")
 ]
 
-class Room:
+class Room: # objekt for room
     def __init__(self,config:tuple[bool,bool,bool] ) -> None:
-            self._config = config
+            self._config = config # config is witch rooms the player can go to afterwards
 
     def event(self):
           num = r.randint(0,len(events)-1)
