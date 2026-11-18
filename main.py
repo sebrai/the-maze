@@ -90,7 +90,7 @@ class Escape_room(Room):# class for escape room
             super().__init__(config)
             self._puzzletekst = puzzletekst # puzzletekst is witch question you get in escape room
             self._answer = Answer
-      def event(self): # spør deg spørsmål og skjekker om du svarte riktig eller ikke
+      def event(self): # asks you question and checks if you awnsered correctlig
             a = input(self._puzzletekst+ ": ").strip().lower()
             print('processing answer')
             t.sleep(1)
@@ -119,7 +119,7 @@ class Spiller():# class for player
       
 s = Spiller(10)# object for spiller
 
-print("You have woken up in a dark and cold maze try and get out")
+print("You have woken up in a dark and cold maze try and get out") # text that is shown at start
 t.sleep(0.3)
 dirs = ('left', 'forward','right')
 curent_room = Room((r.choice([True,False]),True,r.choice([True,False])))
