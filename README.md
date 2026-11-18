@@ -7,3 +7,5 @@ this is a game where you try to escape a maze
 ![image from play though](/play_screenshot.png)
 
 - *i lost*
+
+## brukertesting: de syntes det var bra.
