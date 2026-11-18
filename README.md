@@ -8,4 +8,4 @@ this is a game where you try to escape a maze
 
 - *i lost*
 
-## brukertesting: de syntes det var bra.
+## brukertesting: de syntes det var bra
