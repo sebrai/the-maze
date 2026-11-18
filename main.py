@@ -84,12 +84,12 @@ ro = Room((False,False,False))
 class Escape_room(Room):
       def __init__(self, config:tuple[bool,bool,bool], puzzletekst:str, Answer:str):
             super().__init__(config)
-            self.puzzletekst = puzzletekst
-            self.answer = Answer
+            self._puzzletekst = puzzletekst
+            self._answer = Answer
       def event(self):
-            a = input(self.puzzletekst+ ": ").strip().lower()
+            a = input(self._puzzletekst+ ": ").strip().lower()
             global win, in_progress
-            if a == self.answer:
+            if a == self._answer:
                   win = True
                   in_progress = False
                   print('correct you are safe')
