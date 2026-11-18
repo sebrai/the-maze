@@ -119,7 +119,7 @@ curent_room = Room((r.choice([True,False]),True,r.choice([True,False])))
 while in_progress:
       paths = [val for flag, val in zip(curent_room.get_config(),dirs) if flag]
       direction = input('choose  a direction to move, possible directions: ()'+str(paths)+'): ')
-      while not direction in paths:
+      while not direction.strip().lower() in paths:
             print(direction, ' was not an option, you may have mistyped')
             direction = input('choose  a direction to move, possible directions: ()'+str(paths)+'): ')
       if not (r.randint(1,6) == 6 and s.get_hp() < 5):
