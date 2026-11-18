@@ -2,8 +2,6 @@ import random as r
 from typing import Callable
 in_progress = True
 win = False
-def hey(): print('hey')  
-def hi():print('hi')
 def trap1(): 
       dmg = r.randint(0,3)
       s.take_dmg(dmg)
