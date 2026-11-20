@@ -119,7 +119,7 @@ class Spiller():# class for player
       
 s = Spiller(10)# object for spiller
 
-print("You have woken up in a dark and cold maze try and get out") # text that is shown at start
+print("You have woken up in a dark and cold maze try and get out. You have 10 HP") # text that is shown at start
 t.sleep(0.3)
 dirs = ('left', 'forward','right')
 curent_room = Room((r.choice([True,False]),True,r.choice([True,False])))# sets the starting room
